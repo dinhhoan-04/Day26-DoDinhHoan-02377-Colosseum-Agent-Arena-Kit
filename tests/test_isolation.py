@@ -197,6 +197,7 @@ def test_rpc_response_error_requires_kind() -> None:
 # fail to connect for reasons that have nothing to do with this suite.
 
 
+@pytest.mark.skipif(sys.platform == "win32", reason="POSIX libc open vector not supported on Windows")
 def test_run_probe_vectors_unsandboxed_baseline(tmp_path: Path) -> None:
     arena_root = tmp_path / "arena"
     duel_scratch = arena_root / "scratch" / "duel"
